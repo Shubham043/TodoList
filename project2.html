@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>To do list</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="project.css">
+</head>
+
+
+<body style="background:linear-gradient(to bottom, rgb(226, 234, 124), rgb(98, 181, 213)), rgb(187, 238, 110)">
+    <main>
+        <div class="container mt-5 col-6">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Type your todo" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <button id="add_btn" class="btn btn-outline-success" type="button" id="button-addon2">Add</button>
+            </div>
+
+        </div>
+        <div>
+            <ul id="parentList" style="margin:50px" class="list-group ">
+                <li style="width:350px;height: 50px; background: linear-gradient(to bottom, rgb(206, 98, 98)0% ,rgb(193, 193, 67)100%) ; margin-left: 130px;" class="list-group-item">My list<button style="margin-left: 200px; opacity: 0;" id="remove"
+                        class="btn btn-danger" onclick="removeChapter(this)">Remove</button> <button style="opacity: 0;" id="edit" class="btn btn-warning">Edit</button>
+                </li>
+
+            </ul>
+        </div>
+    </main>
+    <script>
+        let addBtn = document.getElementById('add_btn')
+        addBtn.addEventListener('click', addChapter)
+        let parentList = document.getElementById('parentList');
+        function addChapter(e) {
+            let currentBtn = e.currentTarget;
+            let currentInput = currentBtn.previousElementSibling
+            let currentChapterName = currentInput.value
+            console.log(currentInput.value)
+
+            let newLi = document.createElement('li')
+            // newLi.classList.add('list-group-item')
+            // newLi.textContent = currentInput.value //by creating new element
+            newLi.className = "list-group-item"
+            newLi.innerHTML= ` <li style="background: linear-gradient(to bottom, rgb(206, 98, 98)0% ,rgb(193, 193, 67)100%) "  class="list-group-item">${currentChapterName} <button style="margin-left:400px; height: 45px;" id="remove"  class="btn btn-danger" onclick="removeChapter(this)">Remove</button> <button style= "opacity:0" id="edit" class="btn btn-warning">Edit</button>
+                </li>`
+
+
+            let parentList = document.getElementById('parentList');
+            parentList.appendChild(newLi)
+
+
+        }
+        function removeChapter(currElement){
+            currElement.parentElement.remove()
+          
+        }
+        
+            
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
